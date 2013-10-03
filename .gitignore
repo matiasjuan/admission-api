@@ -1,5 +1,3 @@
 /target
 
-.studio/caches/types_contents.xml
-
-.studio/caches/metadata_contents.xml
+.studio/*
