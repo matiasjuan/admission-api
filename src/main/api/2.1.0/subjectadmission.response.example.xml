@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:admitSubject xmlns:ns0="http://www.mule-health.com/SOA/message/1.0">
+  <ns1:Referer xmlns:ns1="http://www.mule-health.com/SOA/model/1.0">
+    <clientId/>
+  </ns1:Referer>
+  <ns1:Referral xmlns:ns1="http://www.mule-health.com/SOA/model/1.0">
+    <procedure>
+      <code>In-patient</code>
+      <admission>Elective</admission>
+      <department>Cardiology</department>
+    </procedure>
+  </ns1:Referral>
+  <ns1:Subject xmlns:ns1="http://www.mule-health.com/SOA/model/1.0">
+    <nationalId>12341234</nationalId>
+    <firstName>Nial</firstName>
+    <lastName>Darbey</lastName>
+    <address1>Italia</address1>
+    <nationality>Irish</nationality>
+    <gender>Male</gender>
+    <dateOfBirth>1970-01-01</dateOfBirth>
+  </ns1:Subject>
+</ns0:admitSubject>

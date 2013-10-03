@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="episodeId" type="xs:long"/>
+  <xs:element name="admission" type="xs:string"/>
+  <xs:element name="startDate" type="xs:date"/>
+  <xs:element name="endDate" type="xs:date"/>
+  <xs:element name="care" type="xs:string"/>
+  <xs:element name="costPerNight" type="xs:byte"/>
+  <xs:element name="initialStayEstimate" type="xs:byte"/>
+  <xs:element name="runningTotal" type="xs:short"/>
+  <xs:element name="status" type="xs:string"/>
+</xs:schema>

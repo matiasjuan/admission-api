@@ -1,0 +1,70 @@
+  {
+    "name": "admission request schema",
+    "type": "object",
+    "properties": {
+      "Referrar": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          }
+        }
+      },
+      "Referral": {
+        "type": "object",
+        "required": true, 
+        "properties": {
+          "procedure": {
+            "type": "object",
+            "properties": {
+              "code" : { "type": "string", "required": true } ,
+              "admission" : { "type": "string", "required": true } ,
+              "department" : { "type": "string", "required": true } 
+            }
+          }
+        }
+      },
+      "Subject": {
+        "type": "object",
+        "required": true, 
+        "properties": {
+          "nationalId": {
+            "type": "string",
+            "required": true
+          },
+          "firstName": {
+            "type": "string",
+            "required": true
+          },
+          "lastName": {
+            "type": "string",
+            "required": true
+          },
+          "address1": {
+            "type": "string",
+            "required": true
+          },
+          "address2": {
+            "type": "string",
+            "required": false
+          },
+          "address3": {
+            "type": "string",
+            "required": false
+          },
+          "nationality": {
+            "type": "string",
+            "required": true
+          },
+          "gender": {
+            "type": "string",
+            "required": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }

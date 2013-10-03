@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="matiasjuan" created="Tue Jul 23 13:48:25 GMT-03:00 2013" guiVersion="3.4.0.P" id="1374599084245" licenseCode="Unlicensed" licenseType="Unknown" modified="Tue Jul 23 13:48:25 GMT-03:00 2013" modifiedBy="matiasjuan" name="new_mapping_grf" preview-file="${Project_Home}/src/main/api/Copy of subjectadmission.response.example.xml" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope" _dataStructure="OBJECT" _id="__id" _type="Input" id="2607b56a-09d9-4182-af3e-116364427d59">
+<Record fieldDelimiter="|" name="Envelope" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns2,http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/ns2:Episode/episodeId" containerType="SINGLE" label="episodeId" name="episodeId" type="long"/>
+<Field __index="1" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns2,http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/ns2:Episode/ns2:PatientId" containerType="SINGLE" label="PatientId" name="PatientId" type="long"/>
+<Field __index="2" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns2,http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/ns2:Episode/admission" containerType="SINGLE" label="admission" name="admission" type="string"/>
+<Field __index="3" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns2,http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/ns2:Episode/startDate" containerType="SINGLE" label="startDate" name="startDate" type="date"/>
+<Field __index="4" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns2,http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/ns2:Episode/endDate" containerType="SINGLE" label="endDate" name="endDate" type="date"/>
+<Field __index="5" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns2,http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/ns2:Episode/care" containerType="SINGLE" label="care" name="care" type="string"/>
+<Field __sourcePath="{http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/Bill/@costPerNight" containerType="SINGLE" label="costPerNight" name="costPerNight" type="number"/>
+<Field __sourcePath="{http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/Bill/@initialStayEstimate" containerType="SINGLE" label="initialStayEstimate" name="initialStayEstimate" type="number"/>
+<Field __sourcePath="{http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/Bill/@runningTotal" containerType="SINGLE" label="runningTotal" name="runningTotal" type="number"/>
+<Field __sourcePath="{http://www.mule-health.com/SOA/message/1.0=ns1,http://schemas.xmlsoap.org/soap/envelope/=ns0}/ns0:Envelope/ns0:Body/ns1:admitSubjectResponse/Bill/@status" containerType="SINGLE" label="status" name="status" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="56d02e4b-ffa7-4d0a-a7c0-e45d5caa81be">
+<Record fieldDelimiter="|" name="object" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" label="__id" name="__id" type="string"/>
+<Field __sourcePath="{}/object/Episode/episodeId" containerType="SINGLE" label="episodeId" name="episodeId" type="string"/>
+<Field __sourcePath="{}/object/Episode/PatientId" containerType="SINGLE" label="PatientId" name="PatientId" type="string"/>
+<Field __sourcePath="{}/object/Episode/admission" containerType="SINGLE" label="admission" name="admission" type="string"/>
+<Field __sourcePath="{}/object/Episode/startDate" containerType="SINGLE" label="startDate" name="startDate" type="string"/>
+<Field __sourcePath="{}/object/Episode/endDate" containerType="SINGLE" label="endDate" name="endDate" type="string"/>
+<Field __sourcePath="{}/object/Episode/care" containerType="SINGLE" label="care" name="care" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" guiName="Foreach 'ns0:Envelope' -&gt; 'object'" guiX="460" guiY="20" id="FOREACH_NS0_ENVELOPE_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.episodeId = (isnull(input.episodeId) ? null : num2str(input.episodeId));
+output.PatientId = (isnull(input.PatientId) ? null : num2str(input.PatientId));
+output.admission = input.admission;
+output.startDate = (isnull(input.startDate) ? null : date2str(input.startDate, "yyyy/MM/dd"));
+output.endDate = (isnull(input.endDate) ? null : date2str(input.endDate, "yyyy/MM/dd"));
+output.care = input.care;
+]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:outputPayload" guiName="JSON WRITER" guiX="900" guiY="20" id="JSON_WRITER0" type="JSON_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <Episode>
+    <episodeId>$0.episodeId</episodeId>
+    <PatientId>$0.PatientId</PatientId>
+    <admission>$0.admission</admission>
+    <startDate>$0.startDate</startDate>
+    <endDate>$0.endDate</endDate>
+    <care>$0.care</care>
+  </Episode>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JSON]]></attr>
+<attr name="jsonSchemaURL"><![CDATA[./src/main/api/subjectadmission.response.example.json]]></attr>
+</Node>
+<Node charset="UTF-8" dataPolicy="Lenient" enabled="enabled" fileURL="dict:inputPayload" guiName="XML READER" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
+<attr name="xmlSchemaURL"><![CDATA[./src/test/resources/episodeId.xsd,/Users/matiasjuan/Google Drive/MuleStudio/workspace/admissionApi/src/test/resources/Episode.xsd,/Users/matiasjuan/Google Drive/MuleStudio/workspace/admissionApi/src/test/resources/admitSubjectResponse.xsd,/Users/matiasjuan/Google Drive/MuleStudio/workspace/admissionApi/src/test/resources/Envelope.xsd]]></attr>
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context namespacePaths="ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" outPort="0" sequenceField="__id" xpath="/ns0:Envelope">
+  <Mapping cloverField="episodeId" namespacePaths="ns2=&quot;http://www.mule-health.com/SOA/model/1.0&quot;;ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/ns2:Episode/episodeId"/>
+  <Mapping cloverField="PatientId" namespacePaths="ns2=&quot;http://www.mule-health.com/SOA/model/1.0&quot;;ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/ns2:Episode/ns2:PatientId"/>
+  <Mapping cloverField="admission" namespacePaths="ns2=&quot;http://www.mule-health.com/SOA/model/1.0&quot;;ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/ns2:Episode/admission"/>
+  <Mapping cloverField="startDate" namespacePaths="ns2=&quot;http://www.mule-health.com/SOA/model/1.0&quot;;ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/ns2:Episode/startDate"/>
+  <Mapping cloverField="endDate" namespacePaths="ns2=&quot;http://www.mule-health.com/SOA/model/1.0&quot;;ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/ns2:Episode/endDate"/>
+  <Mapping cloverField="care" namespacePaths="ns2=&quot;http://www.mule-health.com/SOA/model/1.0&quot;;ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/ns2:Episode/care"/>
+  <Mapping cloverField="costPerNight" namespacePaths="ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/Bill/@costPerNight"/>
+  <Mapping cloverField="initialStayEstimate" namespacePaths="ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/Bill/@initialStayEstimate"/>
+  <Mapping cloverField="runningTotal" namespacePaths="ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/Bill/@runningTotal"/>
+  <Mapping cloverField="status" namespacePaths="ns1=&quot;http://www.mule-health.com/SOA/message/1.0&quot;;ns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;" trim="true" xpath="ns0:Body/ns1:admitSubjectResponse/Bill/@status"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__rootGlobalElementName"><![CDATA[{http://schemas.xmlsoap.org/soap/envelope/}Envelope]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="FOREACH_NS0_ENVELOPE_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="56d02e4b-ffa7-4d0a-a7c0-e45d5caa81be" outPort="Port 0 (out)" toNode="JSON_WRITER0:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="2607b56a-09d9-4182-af3e-116364427d59" outPort="Port 0 (out)" toNode="FOREACH_NS0_ENVELOPE_OBJECT:0"/>
+</Phase>
+</Graph>

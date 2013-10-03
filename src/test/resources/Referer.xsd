@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.mule-health.com/SOA/model/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Referer" type="ns:RefererType" xmlns:ns="http://www.mule-health.com/SOA/model/1.0"/>
+  <xs:element name="Referral" type="ns:ReferralType" xmlns:ns="http://www.mule-health.com/SOA/model/1.0"/>
+  <xs:element name="Subject" type="ns:SubjectType" xmlns:ns="http://www.mule-health.com/SOA/model/1.0"/>
+  <xs:complexType name="RefererType">
+    <xs:sequence>
+      <xs:element ref="clientId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferralType">
+    <xs:sequence>
+      <xs:element ref="procedure"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubjectType">
+    <xs:sequence>
+      <xs:element ref="nationalId"/>
+      <xs:element ref="firstName"/>
+      <xs:element ref="lastName"/>
+      <xs:element ref="address1"/>
+      <xs:element ref="nationality"/>
+      <xs:element ref="gender"/>
+      <xs:element ref="dateOfBirth"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

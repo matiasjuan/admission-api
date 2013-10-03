@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:objectstore="http://www.mulesoft.org/schema/mule/objectstore" xmlns:cloudhub="http://www.mulesoft.org/schema/mule/cloudhub" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
+	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+	xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
+http://www.mulesoft.org/schema/mule/cloudhub http://www.mulesoft.org/schema/mule/cloudhub/1.0/mule-cloudhub.xsd
+http://www.mulesoft.org/schema/mule/objectstore http://www.mulesoft.org/schema/mule/objectstore/1.0/mule-objectstore.xsd">
+    <objectstore:config name="ObjectStore" partition="admission-api" persistent="true" doc:name="ObjectStore"/>
+    <data-mapper:config name="admission_response_2_1_0_grf" transformationGraphPath="admission_response-2.1.0.grf" doc:name="DataMapper"/>
+    
+	<flow name="main-v2.1.0" doc:name="main-v2.1.0">
+		<http:inbound-endpoint host="${http.host}" port="${http.port}" path="${http.path.v.2.1.0}" doc:name="HTTP" exchange-pattern="request-response" >
+        	<object-to-string-transformer></object-to-string-transformer>
+        </http:inbound-endpoint>
+        <apikit:router config-ref="admission-v-2.1.0" doc:name="APIKit Router"/>
+        <exception-strategy ref="Global_Mapping_Exception_Strategy" doc:name="Reference Exception Strategy"/>
+    </flow>
+    
+    <flow name="main-v2.1.0-internal" doc:name="main-v2.1.0-internal">
+        <http:inbound-endpoint host="${http.host}" port="${http.port}" path="${http.path.v.2.1.0-private}" doc:name="HTTP" exchange-pattern="request-response" >
+        	<object-to-string-transformer></object-to-string-transformer>
+        </http:inbound-endpoint>
+        <apikit:router config-ref="admission-v-2.1.0" doc:name="APIKit Router"/>
+        <exception-strategy ref="Global_Mapping_Exception_Strategy" doc:name="Reference Exception Strategy"/>
+    </flow>
+
+    <flow name="get:/status:admission-v-2.1.0" doc:name="get:/status:admission-v-2.1.0">
+        <set-payload value="{
+  message: &quot;All systems go - API Status is Green&quot;
+}" doc:name="Set Payload"/>
+<!--         <http:response-builder contentType="application/json"/> -->
+<!--         <cloudhub:create-notification config-ref="Cloudhub" message="Status: #[payload]" priority="WARN" doc:name="notify call to get/status"/> -->
+    </flow>
+
+    <flow name="post:/admission:admission-v-2.1.0" doc:name="post:/admission:admission-v-2.1.0">
+        <logger message="1 #[payload]" level="INFO" doc:name="Logger"/>
+        <enricher target="#[flowVars['admissionid']]" doc:name="Message Enricher">
+            <objectstore:retrieve config-ref="ObjectStore" key="admissionid" defaultValue-ref="#[1]" doc:name="ObjectStore"/>
+        </enricher>
+<!--         <set-property propertyName="admission-id" value="#[flowVars['admission-id']+1]" doc:name="Property"/> -->
+        <objectstore:store config-ref="ObjectStore" key="admissionid" value-ref="#[flowVars['admissionid']+1]" overwrite="true" doc:name="ObjectStore"/>
+        
+        <tracking:custom-event event-name="Admission request" doc:name="Custom Business event">
+            <tracking:meta-data key="request" value="#[payload]"/>
+            <tracking:meta-data key="admissionid" value="#[flowVars['admissionid']]"/>
+        </tracking:custom-event>
+        
+        <data-mapper:transform config-ref="admission_request_grf" doc:name="admission_request_json_to_xml"/>
+        
+<!--         <object-to-byte-array-transformer doc:name="object to byte-array for CH" doc:description="this is included to use in cloudhub"/> -->
+<!--         <logger message="2 #[payload]" level="INFO" doc:name="Logger"/> -->
+        
+        <flow-ref name="subflowPostAdmission-v2"  doc:name="subflowPostAdmission"/>
+        <choice doc:name="Choice">
+            <when expression="flowVars['callStatus'] == 200">
+                <processor-chain doc:name="Processor Chain">
+                    <mulexml:dom-to-xml-transformer returnClass="java.lang.String"></mulexml:dom-to-xml-transformer>
+                    <logger message="before DM #[payload]" level="INFO" doc:name="Logger"/>
+                    <data-mapper:transform config-ref="admission_response_2_1_0_grf" doc:name="admission_rsponse_xml_to_json">
+                        <data-mapper:input-arguments>
+                            <data-mapper:input-argument key="admissiondate">#['2013-09-25']</data-mapper:input-argument>
+                            <data-mapper:input-argument key="admissionid">#[flowVars['admissionid']]</data-mapper:input-argument>
+                        </data-mapper:input-arguments>
+                    </data-mapper:transform>
+                    <byte-array-to-string-transformer doc:name="Byte Array to String"/>
+                    
+                    <tracking:custom-event event-name="Admission request processed" doc:name="Custom Business event">
+			            <tracking:meta-data key="response" value="#[payload]"/>
+                        <tracking:meta-data key="admission-id" value="#[flowVars['admissionid']]"/>
+			        </tracking:custom-event>
+			        
+                    <cloudhub:create-notification config-ref="Cloudhub" message="Admission processed succesfuly: 
+ID: #[flowVars['admissionid']]
+Message: #[payload]" priority="INFO" doc:name="Notify response"/>
+			        
+			        
+<!--                     <logger message="3 #[payload]" level="INFO" doc:name="Logger"/> -->
+                </processor-chain>
+            </when>
+            <otherwise>
+                <logger level="INFO" doc:name="Logger" message="the end"/>
+                <set-property propertyName="http.status" value="#[500]" doc:name="Property"/>
+                <set-payload value="{ message: 'Internal Error (call to admission service http status was #[flowVars['callStatus']]) ' }" doc:name="Set Payload"/>
+                <cloudhub:create-notification config-ref="Cloudhub" message="Error processing admission: 
+ID: #[flowVars['admissionid']]
+Message: #[payload]" priority="ERROR" doc:name="Notify error"/>
+            </otherwise>
+        </choice>
+    </flow>
+    
+    <flow name="subflowPostAdmission-v2" doc:name="subflowPostAdmission-v2">
+    	<set-property propertyName="X-Anypoint-ContractKey" value="${asr.X-Anypoint-ContractKey}" doc:name="Set X-Anypoint-ContractKey" />
+    	<message-properties-transformer overwrite="true" doc:name="Message Properties">
+		    <add-message-property key="http.disable.status.code.exception.check" value="false"/>
+		</message-properties-transformer>
+        <http:outbound-endpoint exchange-pattern="request-response" 
+        	host="${admission.service.host}" port="${admission.service.port}" path="${admission.service.path}" method="POST" doc:name="AdmissionService">
+	    	<cxf:proxy-client payload="body"  doc:name="Proxy client" enableMuleSoapHeaders="true" />
+	        <object-to-string-transformer doc:name="Object to String" doc:description="so http outbound can calculate size of request data" />
+       	</http:outbound-endpoint>
+        <set-variable variableName="callStatus" value="#[message.inboundProperties['http.status']]" doc:name="set call status"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+        	<!-- We are here because of status codes different to 200 -->
+        	<!--
+        		429 - API Call Exceded
+        		404 - Not found
+        		Etc. 
+        	 -->
+            <logger level="INFO" doc:name="Logger" message="#[payload.statusLine.statusCode]"/>
+	        <set-variable variableName="callStatus" value="#[payload.statusLine.statusCode]" doc:name="set call status"/>
+            <tracking:custom-event event-name="Error calling admission service" doc:name="Custom Business event">
+                <tracking:meta-data key="http status" value="#[payload.statusLine.statusCode]"/>
+            </tracking:custom-event>
+        </catch-exception-strategy>
+    </flow>
+    
+    <flow name="delete:/admission/{subjectId}:admission-v-2.1.0" doc:name="delete:/admission/{subjectId}:admission-v-2.1.0">
+        <logger message="deleting subject #[subjectId]" level="INFO" doc:name="Logger"/>
+<!--         <flow-ref name="subflowDeleteAdmission"  doc:name="subflowDeleteAdmission"/> -->
+<!--         <mulexml:dom-to-xml-transformer returnClass="java.lang.String"/> -->
+        <logger message="deleteAdmissionResponse #[payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    
+    
+</mule>

@@ -1,0 +1,43 @@
+  {
+    "name": "admission response schema",
+    "type": "object",
+    "properties": {
+      "Admission": {
+        "type": "object",
+        "properties": {
+          "admissionid": { "type": "integer" },
+          "admissiondate": { "type": "string" }
+        }
+      },
+      "Episode": {
+        "type": "object",
+        "required": true, 
+        "properties": {
+          "episodeId" : { "type": "string" } ,
+          "PatientId" : { "type": "string" } ,
+          "admission" : { "type": "string" } ,
+          "startDate" : { "type": "string" } ,
+          "endDate" : { "type": "string" } ,
+          "care" : { "type": "string" } 
+        }
+      },
+      "Bill": {
+        "type": "object",
+        "required": true, 
+        "properties": {
+          "costPerNight": {
+            "type": "integer"
+          },
+          "initialStayEstimate": {
+            "type": "integer"
+          },
+          "runningTotal": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }

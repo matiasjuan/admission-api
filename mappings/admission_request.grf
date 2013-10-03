@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph author="matiasjuan" created="Mon Jul 22 17:41:34 GMT-03:00 2013" guiVersion="3.4.0.P" id="1374528703652" licenseCode="Unlicensed" licenseType="Unknown" modified="Mon Jul 22 17:41:34 GMT-03:00 2013" modifiedBy="matiasjuan" name="new_mapping_grf" preview-file="${Project_Home}/src/main/api/subjectadmission.request.example.json" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject" _dataStructure="OBJECT" _id="__id" _type="Output" id="5057338a-9251-4096-9305-64c112b8d762">
+<Record fieldDelimiter="|" name="admitSubject" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Referer/clientId" containerType="SINGLE" label="clientId" name="clientId" type="string"/>
+<Field __index="1" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Referral/procedure/code" containerType="SINGLE" label="code" name="code" type="string"/>
+<Field __index="2" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Referral/procedure/admission" containerType="SINGLE" label="admission" name="admission" type="string"/>
+<Field __index="3" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Referral/procedure/department" containerType="SINGLE" label="department" name="department" type="string"/>
+<Field __index="4" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/nationalId" containerType="SINGLE" label="nationalId" name="nationalId" type="integer"/>
+<Field __index="5" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/firstName" containerType="SINGLE" label="firstName" name="firstName" type="string"/>
+<Field __index="6" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/lastName" containerType="SINGLE" label="lastName" name="lastName" type="string"/>
+<Field __index="7" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/address1" containerType="SINGLE" label="address1" name="address1" type="string"/>
+<Field __index="8" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/nationality" containerType="SINGLE" label="nationality" name="nationality" type="string"/>
+<Field __index="9" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/gender" containerType="SINGLE" label="gender" name="gender" type="string"/>
+<Field __index="10" __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/dateOfBirth" containerType="SINGLE" label="dateOfBirth" name="dateOfBirth" type="string"/>
+<Field __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/@address2" containerType="SINGLE" label="address2" name="address2" type="string"/>
+<Field __sourcePath="{http://www.mule-health.com/SOA/model/1.0=ns1,http://www.mule-health.com/SOA/message/1.0=ns0}/ns0:admitSubject/ns1:Subject/@address3" containerType="SINGLE" label="address3" name="address3" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="ef0be079-f935-4ea7-bc4f-81feae851a54">
+<Record fieldDelimiter="|" name="object" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" label="__id" name="__id" type="string"/>
+<Field __sourcePath="{}/object/Referrar/clientId" containerType="SINGLE" label="clientId" name="clientId" type="string"/>
+<Field __sourcePath="{}/object/Referral/procedure/code" containerType="SINGLE" label="code" name="code" type="string"/>
+<Field __sourcePath="{}/object/Referral/procedure/admission" containerType="SINGLE" label="admission" name="admission" type="string"/>
+<Field __sourcePath="{}/object/Referral/procedure/department" containerType="SINGLE" label="department" name="department" type="string"/>
+<Field __sourcePath="{}/object/Subject/nationalId" containerType="SINGLE" label="nationalId" name="nationalId" type="string"/>
+<Field __sourcePath="{}/object/Subject/firstName" containerType="SINGLE" label="firstName" name="firstName" type="string"/>
+<Field __sourcePath="{}/object/Subject/lastName" containerType="SINGLE" label="lastName" name="lastName" type="string"/>
+<Field __sourcePath="{}/object/Subject/address1" containerType="SINGLE" label="address1" name="address1" type="string"/>
+<Field __sourcePath="{}/object/Subject/address2" containerType="SINGLE" label="address2" name="address2" type="string"/>
+<Field __sourcePath="{}/object/Subject/address3" containerType="SINGLE" label="address3" name="address3" type="string"/>
+<Field __sourcePath="{}/object/Subject/nationality" containerType="SINGLE" label="nationality" name="nationality" type="string"/>
+<Field __sourcePath="{}/object/Subject/gender" containerType="SINGLE" label="gender" name="gender" type="string"/>
+<Field __sourcePath="{}/object/Subject/dateOfBirth" containerType="SINGLE" label="dateOfBirth" name="dateOfBirth" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:outputPayload" guiName="XML WRITER" guiX="900" guiY="20" id="EXT_XML_WRITER0" type="EXT_XML_WRITER" xmlSchemaURL="./src/test/resources/clientId.xsd,/Users/matiasjuan/Downloads/devel/workspaces/3.5/admissionApi/src/test/resources/Referer.xsd,/Users/matiasjuan/Downloads/devel/workspaces/3.5/admissionApi/src/test/resources/admitSubject.xsd">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:element clover:name="ns0:admitSubject" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" xmlns:ns1="http://www.mule-health.com/SOA/model/1.0" xmlns:ns0="http://www.mule-health.com/SOA/message/1.0" clover:inPort="0">
+  <clover:element clover:name="ns1:Referer">
+    <clientId>$0.clientId</clientId>
+  </clover:element>
+  <clover:element clover:name="ns1:Referral">
+    <procedure>
+      <code>$0.code</code>
+      <admission>$0.admission</admission>
+      <department>$0.department</department>
+    </procedure>
+  </clover:element>
+  <clover:element clover:name="ns1:Subject" address3="$0.address3" address2="$0.address2">
+    <nationalId>$0.nationalId</nationalId>
+    <firstName>$0.firstName</firstName>
+    <lastName>$0.lastName</lastName>
+    <address1>$0.address1</address1>
+    <nationality>$0.nationality</nationality>
+    <gender>$0.gender</gender>
+    <dateOfBirth>$0.dateOfBirth</dateOfBirth>
+  </clover:element>
+</clover:element>]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__rootGlobalElementName"><![CDATA[{http://www.mule-health.com/SOA/message/1.0}admitSubject]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'ns0:admitSubject'" guiX="460" guiY="20" id="FOREACH_OBJECT_NS0_ADMIT_SUBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.clientId = (isnull(input.clientId) ? "": input.clientId);
+output.code = input.code;
+output.admission = input.admission;
+output.department = input.department;
+output.nationalId = input.nationalId;
+output.firstName = input.firstName;
+output.lastName = input.lastName;
+output.address1 = input.address1;
+output.address2 = input.address2;
+output.address3 = input.address3;
+output.nationality = input.nationality;
+output.gender = input.gender;
+output.dateOfBirth = input.dateOfBirth;
+
+]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="JSON READER" guiX="20" guiY="20" id="JSON_READER0" type="JSON_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context xpath="/root">
+  <Context outPort="0" sequenceField="__id" xpath="object">
+    <Mapping cloverField="clientId" trim="true" xpath="Referrar/clientId"/>
+    <Mapping cloverField="code" trim="true" xpath="Referral/procedure/code"/>
+    <Mapping cloverField="admission" trim="true" xpath="Referral/procedure/admission"/>
+    <Mapping cloverField="department" trim="true" xpath="Referral/procedure/department"/>
+    <Mapping cloverField="nationalId" trim="true" xpath="Subject/nationalId"/>
+    <Mapping cloverField="firstName" trim="true" xpath="Subject/firstName"/>
+    <Mapping cloverField="lastName" trim="true" xpath="Subject/lastName"/>
+    <Mapping cloverField="address1" trim="true" xpath="Subject/address1"/>
+    <Mapping cloverField="address2" trim="true" xpath="Subject/address2"/>
+    <Mapping cloverField="address3" trim="true" xpath="Subject/address3"/>
+    <Mapping cloverField="nationality" trim="true" xpath="Subject/nationality"/>
+    <Mapping cloverField="gender" trim="true" xpath="Subject/gender"/>
+    <Mapping cloverField="dateOfBirth" trim="true" xpath="Subject/dateOfBirth"/>
+  </Context>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JSON]]></attr>
+<attr name="jsonSchemaURL"><![CDATA[./src/main/api/subjectadmission.request.example.json]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_NS0_ADMIT_SUBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="5057338a-9251-4096-9305-64c112b8d762" outPort="Port 0 (out)" toNode="EXT_XML_WRITER0:0"/>
+<Edge debugMode="true" fromNode="JSON_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="ef0be079-f935-4ea7-bc4f-81feae851a54" outPort="Port 0 (out)" toNode="FOREACH_OBJECT_NS0_ADMIT_SUBJECT:0"/>
+</Phase>
+</Graph>

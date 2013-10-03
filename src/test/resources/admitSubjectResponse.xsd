@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.mule-health.com/SOA/message/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="admitSubjectResponse" type="ns:admitSubjectResponseType" xmlns:ns="http://www.mule-health.com/SOA/message/1.0"/>
+  <xs:complexType name="admitSubjectResponseType">
+    <xs:sequence>
+      <xs:element ref="ns:Episode" xmlns:ns="http://www.mule-health.com/SOA/model/1.0"/>
+      <xs:element ref="ns:Bill" xmlns:ns="http://www.mule-health.com/SOA/model/1.0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

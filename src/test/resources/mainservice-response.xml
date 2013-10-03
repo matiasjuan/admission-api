@@ -1,0 +1,16 @@
+<ns0:admitSubjectResponse xmlns:ns0="http://www.mule-health.com/SOA/message/1.0">
+   <ns1:Episode xmlns:ns1="http://www.mule-health.com/SOA/model/1.0">
+      <episodeId>1380748657172</episodeId>
+      <ns1:PatientId>1380748656758</ns1:PatientId>
+      <admission>Elective</admission>
+      <startDate>2013-10-02</startDate>
+      <endDate>2013-10-07</endDate>
+      <care>Private</care>
+   </ns1:Episode>
+   <ns1:Bill xmlns:ns1="http://www.mule-health.com/SOA/model/1.0">
+      <costPerNight>100</costPerNight>
+      <initialStayEstimate>5</initialStayEstimate>
+      <runningTotal>500</runningTotal>
+      <status>ADMITTED</status>
+   </ns1:Bill>
+</ns0:admitSubjectResponse>

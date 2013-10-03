@@ -1,0 +1,75 @@
+#%RAML 0.2
+---
+title: Hospital Admission API
+version: 1.0.0
+baseUri: http://localhost/api/1.0.0
+#traits:
+#  commonResponses: !include common-responses.yml
+
+documentation:
+  - title: Admission to Hospital API
+    content: |
+      The hospital admissions API simplifies the process for onboarding a patient and the patient's EHR into the system
+  - title: The API
+    content: |
+      The Admissions API allows a user to call methods that respond in REST style json. 
+
+/status:
+  displayName: North Hollywood MC Status
+  get:
+    #use: [ commonResponses ]
+    description: |
+      General status of North Hollywood MC API
+    responses:
+      200:
+        body:
+          application/json: !!null
+      429:
+        description: |
+          API calls exceeded
+/admission:
+  displayName: Admission
+  #use: [ commonResponses ]
+  post:
+    description: |
+      Creates a brand new admission Subject
+    body:
+      application/json:
+        schema: !includes common/subjectadmission.request.schema.json
+        example: !includes common/subjectadmission.request.example.json
+    responses:
+      200: 
+        description: admission submited succesfully
+        body:
+          application/json: 
+            example: !include 1.0.0/subjectadmission.response.example.json
+      429:
+        description: |
+          API calls exceeded
+      503:
+        description: |
+          The service is currently unavailable or you exceeded the maximum requestes
+          per hour allowed to your application. 
+  /{subjectId}:
+    displayName: Subject
+    uriParameters:
+      subjectId:
+        type: string
+        required: true
+        pattern: '[-a-zA-Z0-9]*'
+        minLength: 1
+        maxLength: 80
+        example: "12312sSDS23-23"
+    delete:
+      description: |
+        Deletes an existing Subject Admission
+      responses:
+        204:
+          body:
+            application/json: !!null
+        405:
+          description: |
+            Missing parameter
+        429:
+          description: |
+            API calls exceeded

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="mule-config">
+    <global-unknown description="false" unknownName="Global_Mapping_Exception_Strategy" index="1" entity-id="global-unknown#1">
+        <content>&lt;apikit:mapping-exception-strategy xmlns:apikit=&quot;http://www.mulesoft.org/schema/mule/apikit&quot; name=&quot;Global_Mapping_Exception_Strategy&quot;&gt;
+        &lt;apikit:mapping statusCode=&quot;404&quot;&gt;
+            &lt;apikit:exception value=&quot;org.mule.module.apikit.exception.NotFoundException&quot;/&gt;
+            &lt;set-payload xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot; value=&quot;resource not found&quot;/&gt;
+        &lt;/apikit:mapping&gt;
+        &lt;apikit:mapping statusCode=&quot;405&quot;&gt;
+            &lt;apikit:exception value=&quot;org.mule.module.apikit.exception.MethodNotAllowedException&quot;/&gt;
+            &lt;set-payload xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot; value=&quot;method not allowed&quot;/&gt;
+        &lt;/apikit:mapping&gt;
+        &lt;apikit:mapping statusCode=&quot;415&quot;&gt;
+            &lt;apikit:exception value=&quot;org.mule.module.apikit.exception.UnsupportedMediaTypeException&quot;/&gt;
+            &lt;set-payload xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot; value=&quot;unsupported media type&quot;/&gt;
+        &lt;/apikit:mapping&gt;
+        &lt;apikit:mapping statusCode=&quot;411&quot;&gt;
+        	&lt;apikit:exception value=&quot;org.mule.module.apikit.exception.BadRequestException&quot;/&gt;
+            &lt;set-payload xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot; value=&quot;Length Required&quot;/&gt;
+        &lt;/apikit:mapping&gt;
+        &lt;apikit:mapping statusCode=&quot;406&quot;&gt;
+            &lt;apikit:exception value=&quot;org.mule.module.apikit.exception.NotAcceptableException&quot;/&gt;
+            &lt;set-payload xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot; value=&quot;not acceptable&quot;/&gt;
+        &lt;/apikit:mapping&gt;
+        &lt;apikit:mapping statusCode=&quot;400&quot;&gt;
+            &lt;apikit:exception value=&quot;org.mule.module.apikit.exception.BadRequestException&quot;/&gt;
+            &lt;set-payload xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot; value=&quot;bad request&quot;/&gt;
+        &lt;/apikit:mapping&gt;
+        
+        &lt;apikit:mapping statusCode=&quot;429&quot;&gt;
+            &lt;apikit:exception value=&quot;org.mule.module.apikit.exception.MethodNotAllowedException&quot;/&gt;
+            &lt;set-payload xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot; value=&quot;API calls exceeded&quot;/&gt;
+        &lt;/apikit:mapping&gt;
+
+    &lt;/apikit:mapping-exception-strategy&gt;</content>
+    </global-unknown>
+    <global-element name="Cloudhub" type="http://www.mulesoft.org/schema/mule/cloudhub/config" entity-id="Cloudhub#1">
+        <properties>
+            <property name="username"/>
+            <property name="name" value="Cloudhub"/>
+            <property name="maxWaitTime"/>
+            <property name="password"/>
+            <property name="auxiliary;index" value="23"/>
+            <property name="url"/>
+        </properties>
+    </global-element>
+    <global-unknown description="false" unknownName="admission-v-1.0.0" index="24" entity-id="global-unknown#2">
+        <content>&lt;apikit:config xmlns:apikit=&quot;http://www.mulesoft.org/schema/mule/apikit&quot; name=&quot;admission-v-1.0.0&quot; raml=&quot;1.0.0/admission.1.0.0.yaml&quot; consoleEnabled=&quot;true&quot; consolePath=&quot;console&quot; xmlns:doc=&quot;http://www.mulesoft.org/schema/mule/documentation&quot; doc:name=&quot;Router v1.0.0&quot;/&gt;</content>
+    </global-unknown>
+    <global-unknown description="false" unknownName="admission-v-2.1.0" index="25" entity-id="global-unknown#3">
+        <content>&lt;apikit:config xmlns:apikit=&quot;http://www.mulesoft.org/schema/mule/apikit&quot; name=&quot;admission-v-2.1.0&quot; raml=&quot;2.1.0/admission.2.1.0.yaml&quot; consoleEnabled=&quot;true&quot; consolePath=&quot;console&quot; xmlns:doc=&quot;http://www.mulesoft.org/schema/mule/documentation&quot; doc:name=&quot;Router v2.1.0&quot;/&gt;</content>
+    </global-unknown>
+    <global-element name="DataMapper" type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" entity-id="DataMapper#1">
+        <properties>
+            <property name="name" value="admission_request_grf"/>
+            <property name="auxiliary;index" value="26"/>
+            <property name="transformationGraphPath" value="admission_request.grf"/>
+        </properties>
+    </global-element>
+    <global-element name="DataMapper" type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" entity-id="DataMapper#2">
+        <properties>
+            <property name="name" value="admission_response_grf"/>
+            <property name="auxiliary;index" value="27"/>
+            <property name="transformationGraphPath" value="admission_response.grf"/>
+        </properties>
+    </global-element>
+</mule-configuration>
