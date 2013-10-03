@@ -2,13 +2,18 @@ Admission to Hospital API
 =======
 
 This application shows how to expose a service using API Gateway, and how to create different versions of an API
+
 ** API exposition patterns: Gateway 
+
 Mule acts as a proxy to backend service (admission-main-service).
 
 
 ** API Versioning
+
 Changes that can affect API behaviour should go to a new version of the API. For example
+
 ** Policies: adding, or changing policies
+
 ** Existing resources and schemas: modifying schemas (for request or response), changing method behaviours, etc.
 
 Since an api can be used by several consumers, you cannot change the API. You have to create a new version of that api.
