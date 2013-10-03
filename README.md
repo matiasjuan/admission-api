@@ -1,33 +1,42 @@
-WELCOME
+Admission API
 =======
 
-Congratulations you have just created a new Mule project!
+This application shows how to expose a service using API Gateway, and how to create different versions of an API
+** API exposition patterns: Gateway 
+Mule acts as a proxy to backend service (admission-main-service).
 
-This wizard created a number of new classes and resources useful for new Mule
-projects.  Each of the created files contains documentation and _todo_ items
-where necessary.  Here is an overview of what was created.
 
-./pom.xml:
+** API Versioning
+Changes that can affect API behaviour should go to a new version of the API. For example
+** Policies: adding, or changing policies
+** Existing resources and schemas: modifying schemas (for request or response), changing method behaviours, etc.
 
-TESTING
-=======
+Since an api can be used by several consumers, you cannot change the API. You have to create a new version of that api.
 
-This  project also contains test classes that can be run as part of a test suite. 
-You can run them by doing:
+This example exposes two apis: api/1.0.0 and api/2.1.0 to show a way to create different versions of an API.
+
+
+Configuration properties:
 
 ```
-mvn clean test
+http.port=8081
+http.host=localhost
+
+admission.service.port=80
+admission.service.host=<url of the main service>
+admission.service.path=AdmissionService/v1.0.0/
+
+http.path.v.1.0.0=api/1.0.0/
+http.path.v.1.0.0-private=private/1.0.0/
+http.path.v.2.1.0=api/2.1.0/
+http.path.v.2.1.0-private=private/2.1.0/
+
+anypoint.agent.token=<token provided by Anypoint Service Registry>
 ```
 
 
 ADDITIONAL RESOURCES
 ====================
-Everything you need to know about getting started with Mule can be found here:
-http://www.mulesoft.org/documentation/display/MULE3INSTALL/Hello,+Mule!
+See https://github.com/matiasjuan/admission-main-service for the backend service
 
-Also, MuleSoft, the company behind Mule, offers 24x7 support options:
-http://www.mulesoft.com/enterprise-subscriptions-and-support
 
-Enjoy your Mule ride!
-
-The Mule Team
