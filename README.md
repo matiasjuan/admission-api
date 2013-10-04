@@ -56,4 +56,5 @@ ADDITIONAL RESOURCES
 ====================
 See https://github.com/matiasjuan/admission-main-service for the backend service
 
+Original Admission to Hospital example http://blogs.mulesoft.org/soa-school-service-orchestration-2/ (by Nial Darbey)
 
